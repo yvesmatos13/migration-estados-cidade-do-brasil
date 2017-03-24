@@ -47,8 +47,21 @@ class Cidade < ActiveRecord::Base
   end
 end
 ```
+##Rails 5##
 
-- Modificado o migration para que funcione com versões do Rails 2, 3 e 4
+Estado.rb
+
+class Estado < ApplicationRecord
+	has_many :cidades
+end
+
+Cidade.rb
+
+class Cidade < ApplicationRecord
+  belongs_to :estado
+end
+
+- Modificado o migration para que funcione com versões do Rails 2, 3, 4 e 5
 - Incluindo '# -*- coding: UTF-8 -*-' no topo do arquivo para ruby 1.9.x
 - Modifiquei o nome da classe da migration que popula os estados e cidades. O rake esta comparando o nome do arquivo com o nome da classe e gerando um erro.
 - Incluí a propriedade "capital" no model "Estado", para que seja possivel identificar a cidade que é capital do estado, para ordenar um combo priorizando a capital, por exemplo.
